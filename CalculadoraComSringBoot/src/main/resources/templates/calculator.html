@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Temperatura</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        input[type="number"], select {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button[type="submit"] {
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        div {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e9e9e9;
+        }
+
+        h2 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+<h1>Temperatura</h1>
+<form th:action="@{/calculate}" method="post">
+    <input type="number" step="0.01" name="num1" required/>
+    <select name="operator" required>
+        <option value="K>C">K>C</option>
+        <option value="K>F">K>F</option>
+        <option value="C>K">C>K</option>
+        <option value="C>F">C>F</option>
+        <option value="F>C">F>C</option>
+        <option value="F>K">F>K</option>
+        
+    </select>
+    <button type="submit">Converter</button>
+</form>
+<div th:if="${result != null}">
+    <h2>Result: <span th:text="${result}"></span></h2>
+</div>
+</body>
+</html>
